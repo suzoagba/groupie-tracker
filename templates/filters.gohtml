@@ -1,0 +1,62 @@
+{{ define "filters"}}
+    <div id="filters">
+        <form id="filtersForm">
+            <div class="filterOption">
+                <p class="filterType">Creation date:</p>
+
+                <div class="chooseDate">
+                    From
+                    <span id="creationDateFromNr" class="creationDate">{{ .CreationDateMin }}</span>
+                    <input type="range" id="creationDateFrom" name="creationDateFrom"
+                           min="{{ .CreationDateMin }}" max="{{ .CreationDateMax }}" value="{{ .CreationDateMin }}">
+                </div>
+
+
+                <div class="chooseDate">
+                    &nbsp;&nbsp;&nbsp;&nbsp;To
+                    <span id="creationDateToNr" class="creationDate">{{ .CreationDateMax }}</span>
+                    <input type="range" id="creationDateTo" name="creationDateTo"
+                           min="{{ .CreationDateMin }}" max="{{ .CreationDateMax }}" value="{{ .CreationDateMax }}">
+                </div>
+            </div>
+
+            <div class="filterOption">
+                <p class="filterType">First album:</p>
+                From
+                <select name="firstAlbumDateFrom" id="firstAlbumDateFrom">
+                    <option hidden disabled selected value></option>
+                    {{ range .FirstAlbumDates }}
+                        <option value="{{ . }}">{{ . }}</option>
+                    {{ end }}
+                </select>
+                to
+                <select name="firstAlbumDateTo" id="firstAlbumDateTo">
+                    <option hidden disabled selected value></option>
+                    {{ range .FirstAlbumDates }}
+                        <option value="{{ . }}">{{ . }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <div class="filterOption">
+                <p class="filterType">Number of members:</p>
+                <fieldset id="nrMembers">
+                    {{ range .Members }}
+                        <input type="checkbox" id="{{ . }}" name="numMembers" value="{{ . }}">{{ . }}
+                    {{ end }}
+                </fieldset>
+            </div>
+            <div class="filterOption">
+                <!--<label for="concertLocations">Location of concerts: </label>-->
+                <p class="filterType">Location of concerts:</p>
+                <select name="locations" id="locations">
+                    <option hidden disabled selected value></option>
+                    {{ range .Locations }}
+                        <option value="{{ . }}">{{ . }}</option>
+                    {{ end }}
+                </select>
+            </div>
+            <button type="submit" value="Submit" id="submit">Filter</button>
+        </form>
+    </div>
+    <script src="/js/rangeValues.js"></script>
+{{ end }}

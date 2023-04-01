@@ -1,0 +1,152 @@
+:root {
+    --light: #ebebde;
+    --middle: #777764;
+    --dark: #4f4747;
+}
+
+body {
+    font-family: monospace;
+    background-color: var(--middle);
+    color: var(--dark);
+    width: 100%;
+}
+
+#searchAndFilters, #artistNames {
+    background-color: var(--light);
+    border: 1px dotted var(--dark);
+    width: 90vw;
+    margin: auto;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#library, #filters {
+    width: 90vw;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#artistNames {
+    border: 1px dotted var(--dark);
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.artistInfo {
+    display: inline-block;
+    border: 1px solid var(--middle);
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.artistInfo2 {
+    border-radius: 5px;
+    border: 1px solid var(--dark);
+    background-color: var(--light);
+    width: 90vw;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.artistInfo2 p {
+    color: var(--middle);
+}
+
+.artistInfo2 img {
+    border-radius: 15px;
+}
+
+.info2 {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+}
+
+.filterOption {
+    display: inline-block;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 15px;
+    padding-bottom: 25px;
+    border-radius: 5px;
+    height: 100px;
+    min-width: 250px;
+}
+
+#submit {
+    width: 80vw;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 25px;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.artistCover {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.artistInfo, #submit, .filterOption {
+    color: var(--dark);
+    font-weight: bold;
+    border: 1px solid var(--middle);
+    background-color: var(--light);
+}
+
+.artistInfo:hover, #submit:hover {
+    background-color: var(--middle);
+    color: var(--light);
+    border: 1px solid var(--dark);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    background-color: var(--light);
+    border: 1px solid var(--middle);
+    border-radius: 5px;
+    color: var(--dark);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    box-shadow: 1px 1px 1px #000000;
+    border: 1px solid #000000;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background: white;
+}
+
+#error {
+    width: 100vw;
+    text-align: center;
+}
+
+#errorInfo {
+    margin: auto;
+}
+
+#errorNumber {
+    font-size: 30em;
+    margin: auto;
+}
+#errorText1 {
+    font-size: 3em;
+}
+#errorText2 {
+    font-size: 2em;
+}
