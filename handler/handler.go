@@ -10,6 +10,7 @@ import (
 	"regexp"
 	"strconv"
 )
+
 // Handler function for HTTP requests
 func Handler(w http.ResponseWriter, r *http.Request) {
 	// Recover from any panics that may occur during request handling
@@ -43,6 +44,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		errorHandler(w, http.StatusNotFound)
 	}
 }
+
 // errorHandler function for generating error messages
 func errorHandler(w http.ResponseWriter, status int) {
 	w.WriteHeader(status)

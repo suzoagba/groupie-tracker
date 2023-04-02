@@ -24,7 +24,6 @@ func LinkArtists() {
 		locations        []string
 	)
 	for artistIndex, artist := range variables.Artists {
-		//var coordinates []string
 		variables.Artists[artistIndex].LocationDates = make(map[string][]string) // Initialize the map
 		for _, rel := range variables.Relations.Index {
 			if rel.ID == artist.ID {

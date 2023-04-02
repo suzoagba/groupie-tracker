@@ -32,8 +32,8 @@ func formValues(search string, location string, memberNrs []string, albumDateFro
 	} else if albumDateTo != "" {
 		variables.NewPage.Filters.FormData.FirstAlbum.To = artists.ValuesToInt(albumDateTo)
 	} else { // If user hasn't filtered by First album date, we set the dates to 0
-		variables.NewPage.Filters.FormData.FirstAlbum.From = 0
-		variables.NewPage.Filters.FormData.FirstAlbum.To = 0
+		variables.NewPage.Filters.FormData.FirstAlbum.From = variables.NewPage.Filters.FirstAlbumMin
+		variables.NewPage.Filters.FormData.FirstAlbum.To = variables.NewPage.Filters.FirstAlbumMax
 	}
 	// Creation date
 	if creationDateFrom != "" && creationDateTo != "" {

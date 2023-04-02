@@ -22,7 +22,7 @@ func main() {
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("./templates/css/"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("./templates/js/"))))
 
-	fmt.Println("Finished!\nGo to: http://localhost:8080")
+	fmt.Println("\nFinished!\nGo to: http://localhost:8080")
 	handler.Open("http://localhost:8080/")
 
 	log.Fatal(http.ListenAndServe(":8080", nil))
