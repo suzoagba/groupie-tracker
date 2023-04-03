@@ -5,6 +5,9 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 // Links the relations API and artists API
@@ -23,10 +26,12 @@ func LinkArtists() {
 		firstAlbumDates  []int
 		locations        []string
 	)
+	// Iterate over all artists and retrieve their relations and location dates
 	for artistIndex, artist := range variables.Artists {
 		variables.Artists[artistIndex].LocationDates = make(map[string][]string) // Initialize the map
 		for _, rel := range variables.Relations.Index {
 			if rel.ID == artist.ID {
+				// For each date/location key in the relations map, store the value in the artist's map
 				for key, values := range rel.DatesLocations {
 					key = keyToProperForm(key)
 					variables.Artists[artistIndex].LocationDates[key] = values
@@ -34,7 +39,7 @@ func LinkArtists() {
 				}
 			}
 		}
-		// Compiles information for filters
+		// Compile information for filters based on the current artist
 		membersLen = len(variables.Artists[artistIndex].Members)
 		creationDateThis = variables.Artists[artistIndex].CreationDate
 		firstAlbumThis, _ := strconv.Atoi(variables.Artists[artistIndex].FirstAlbum[6:10])
@@ -64,10 +69,14 @@ func LinkArtists() {
 		}
 		firstAlbumDates = dateList(firstAlbumDates, firstAlbumThis)
 	}
+	// Retrieve coordinates for all locations
 	getCoordinatesFromAPI(locations)
+	// Sort filter information
 	sort.Strings(locations)
 	sort.Ints(creationDates)
 	sort.Ints(firstAlbumDates)
+
+	// Generate list of possible number of members
 	membersNrList := []int(toMembersNr(membersMin, membersMax))
 	variables.ForFilters = variables.Filter{
 		Members:         membersNrList,
@@ -121,9 +130,10 @@ func keyToProperForm(a string) string {
 	a = strings.Replace(a, "_", " ", -1)
 	a = strings.Replace(a, "-", ", ", -1)
 	length := len(a)
+	title := cases.Title(language.English)
 	if a[length-3:] == "usa" || a[length-2:] == "uk" {
-		return strings.Title(a[:length-3]) + strings.ToUpper(a[length-3:])
+		return title.String(strings.ToLower(a[:length-3])) + strings.ToUpper(a[length-3:])
 	} else {
-		return strings.Title(a)
+		return title.String(strings.ToLower(a))
 	}
 }
